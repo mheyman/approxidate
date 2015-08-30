@@ -770,8 +770,8 @@ static const struct typelen {
 
 static const char *approxidate_alpha(const char *date, struct atm *tm, struct atm *now, int *num, int *touched)
 {
-    const struct typelen *tl;
-    const struct special *s;
+	const struct typelen *tl;
+	const struct special *s;
 	const char *end = date;
 	int i;
 
