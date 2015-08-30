@@ -736,7 +736,7 @@ static void date_never(struct atm *tm, struct atm *now, int *num)
 	localtime_r(&n, (struct tm*)tm);
 }
 
-static struct special {
+static const struct special {
 	const char *name;
 	void (*fn)(struct atm *, struct atm *, int *);
 } special[] = {
@@ -756,7 +756,7 @@ static const char *number_name[] = {
 	"five", "six", "seven", "eight", "nine", "ten",
 };
 
-static struct typelen {
+static const struct typelen {
 	const char *type;
 	int length;
 } typelen[] = {
@@ -770,8 +770,8 @@ static struct typelen {
 
 static const char *approxidate_alpha(const char *date, struct atm *tm, struct atm *now, int *num, int *touched)
 {
-    struct typelen *tl;
-    struct special *s;
+    struct const typelen *tl;
+    struct const special *s;
 	const char *end = date;
 	int i;
 
@@ -958,7 +958,7 @@ static int approxidate_str(const char *date, struct timeval *tv)
 }
 
 // sets tv to local time
-extern "C" int approxidate(const char *date, struct timeval *tv)
+int approxidate(const char *date, struct timeval *tv)
 {
 	int offset;
 
